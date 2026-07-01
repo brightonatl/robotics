@@ -103,6 +103,9 @@
                     <button data-page="competitions" onclick="navigate('competitions')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="trophy" class="w-4 h-4"></i> Competitions
                     </button>
+                    <button data-page="projects" onclick="navigate('projects')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                        <i data-lucide="layers" class="w-4 h-4"></i> Projects
+                    </button>
                     <button data-page="fame" onclick="navigate('fame')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="star" class="w-4 h-4"></i> Wall of Fame
                     </button>
@@ -136,6 +139,9 @@
                     </button>
                     <button data-page="competitions" onclick="navigate('competitions')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="trophy" class="w-4 h-4"></i> Competitions
+                    </button>
+                    <button data-page="projects" onclick="navigate('projects')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
+                        <i data-lucide="layers" class="w-4 h-4"></i> Projects
                     </button>
                     <button data-page="fame" onclick="navigate('fame')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="star" class="w-4 h-4"></i> Wall of Fame
@@ -404,6 +410,163 @@
             </div>
         </div>
 
+        <!-- PAGE: PROJECTS -->
+        <div id="page-projects" class="page-content max-w-6xl mx-auto px-4 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Student Projects</h2>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Discover the amazing robots, circuits, and solutions built by our brilliant students.</p>
+            </div>
+
+            <!-- Open Repository Banner -->
+            <div class="glass-card p-8 md:p-10 mb-16 text-center bg-gradient-to-br from-blue-100/50 to-red-100/50 dark:from-blue-900/30 dark:to-red-900/30 border-blue-200 dark:border-red-500/30 rounded-2xl relative overflow-hidden flex flex-col items-center">
+                <div class="absolute -left-10 -bottom-10 opacity-10 dark:opacity-20 pointer-events-none">
+                    <i data-lucide="database" class="w-64 h-64 text-blue-500 dark:text-blue-400"></i>
+                </div>
+                <div class="relative z-10 w-full">
+                    <div class="w-16 h-16 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg border border-slate-200 dark:border-slate-700">
+                        <i data-lucide="github" class="w-8 h-8 text-slate-800 dark:text-white"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-3">Open Project Repository</h3>
+                    <p class="text-slate-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+                        We believe in open-source learning. Access all our students' project documentation, circuit diagrams, code files, and build instructions in our public Notion repository.
+                    </p>
+                    <a href="https://delicate-laugh-77f.notion.site/Project-Repository-34174e5a0212822cad4981ba36f8f532" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold hover:bg-slate-800 dark:hover:bg-slate-200 transition-all shadow-xl hover:-translate-y-1">
+                        Access Repository on Notion <i data-lucide="external-link" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Student Work -->
+            <div class="flex items-center gap-4 mb-8">
+                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Featured Builds</h3>
+                <div class="h-px bg-slate-200 dark:bg-white/10 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <!-- Project 1: BRISMART -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row gap-6 items-start group hover:-translate-y-1 transition-transform border-t-4 border-t-blue-500">
+                    <div class="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 shrink-0">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-2">BRISMART</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">A smart IoT device configured to securely control electrical household devices and appliances remotely using a smartphone application.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">IoT</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Smart Control</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Smart Dustbin -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row gap-6 items-start group hover:-translate-y-1 transition-transform border-t-4 border-t-red-500">
+                    <div class="p-4 rounded-2xl bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 shrink-0">
+                        <i data-lucide="trash-2" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-2">Smart Dustbin</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">An autonomous dustbin utilizing ultrasonic sensors to detect human presence, automatically flipping open the lid for contactless disposal.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Autonomous</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Sensors</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3: PenPal -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row gap-6 items-start group hover:-translate-y-1 transition-transform border-t-4 border-t-blue-500">
+                    <div class="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 shrink-0">
+                        <i data-lucide="pen-tool" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-2">PenPal</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">An impactful project initiative aimed at reducing plastic waste by collecting discarded pens from students and distributing structural rewards in return.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Sustainability</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Recycle Rewards</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Brisbot -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row gap-6 items-start group hover:-translate-y-1 transition-transform border-t-4 border-t-red-500">
+                    <div class="p-4 rounded-2xl bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 shrink-0">
+                        <i data-lucide="bot" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-2">Brisbot</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">A smart interactive companion robot designed to communicate and converse verbally with you instantly at the press of a physical button.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Smart AI</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Interactive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Inspiration & Resources Section -->
+            <div class="flex items-center gap-4 mb-8">
+                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Project Inspiration & Resources</h3>
+                <div class="h-px bg-slate-200 dark:bg-white/10 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1: Arduino Official Projects Hub -->
+                <a href="https://delicate-laugh-77f.notion.site/Project-Repository-34174e5a0212822cad4981ba36f8f532" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between hover:border-blue-500 dark:hover:border-blue-500/50 transition-all hover:-translate-y-1 group">
+                    <div>
+                        <div class="p-3 bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-xl w-12 h-12 flex items-center justify-center mb-4">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Arduino Projects Hub</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            Seek design, programming, and layout inspiration from the official repository of Arduino-powered innovations and circuits.
+                        </p>
+                    </div>
+                    <div class="text-sm font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-2">
+                        Browse Arduino Hub <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- Card 2: Instructables Circuits -->
+                <a href="https://www.instructables.com/circuits/" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between hover:border-red-500 dark:hover:border-red-500/50 transition-all hover:-translate-y-1 group">
+                    <div>
+                        <div class="p-3 bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 rounded-xl w-12 h-12 flex items-center justify-center mb-4">
+                            <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Instructables Circuits</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            Explore step-by-step DIY project documentation, community hardware solutions, and interactive electronic schematics.
+                        </p>
+                    </div>
+                    <div class="text-sm font-semibold text-red-600 dark:text-red-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-2">
+                        Get Instructables Inspiration <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- Card 3: Printables 3D Designs -->
+                <a href="https://www.printables.com/" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between hover:border-blue-500 dark:hover:border-blue-500/50 transition-all hover:-translate-y-1 group">
+                    <div>
+                        <div class="p-3 bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-xl w-12 h-12 flex items-center justify-center mb-4">
+                            <i data-lucide="printer" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Printables 3D Designs</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            Discover premium, free-to-use 3D printing models, enclosures, chassis variations, and structural gears ideal for robotics setups.
+                        </p>
+                    </div>
+                    <div class="text-sm font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-2">
+                        Explore 3D Models <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button onclick="window.open('https://delicate-laugh-77f.notion.site/Project-Repository-34174e5a0212822cad4981ba36f8f532', '_blank')" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline inline-flex items-center gap-2">
+                    View all 50+ projects in the repository <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
         <!-- PAGE: WALL OF FAME -->
         <div id="page-fame" class="page-content max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-12">
@@ -523,89 +686,6 @@
                     <div class="glass-card rounded-2xl p-6">
                         <h4 class="font-bold text-slate-900 dark:text-white text-lg">Srijan 2024 (Anjenya Univ)</h4>
                         <p class="text-red-600 dark:text-red-400 text-sm font-semibold my-1">First Prize</p>
-                    </div>
-                    
-                    <div class="glass-card rounded-2xl p-6 border-l-4 border-l-blue-400 hover:-translate-y-1 transition-transform">
-                        <i data-lucide="award" class="w-8 h-8 text-blue-500 mb-4"></i>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">Scientific 2026</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">1st Prize (Junior & Senior)</p>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs mt-2">Dominated both categories with innovative solutions.</p>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6 border-l-4 border-l-purple-400 hover:-translate-y-1 transition-transform">
-                        <i data-lucide="zap" class="w-8 h-8 text-purple-500 mb-4"></i>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">Xplora 5.0 (KPS Dunda)</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">Super Winner</p>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">STEM Innovation League</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">National Award Winner</p>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">Kanger Valley Biz-Pitch 2.0</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">First Prize</p>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6 hover:-translate-y-1 transition-transform">
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">INSPIRE MANAK Awards 2026</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">Selected</p>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs mt-2">Selected for the prestigious government innovation initiative.</p>
-                    </div>
-                    
-                    <div class="glass-card rounded-2xl p-6 sm:col-span-2 lg:col-span-3 bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-wrap gap-3">
-                        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs text-slate-700 dark:text-slate-300 font-medium">Success at INSEF 2026</span>
-                        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs text-slate-700 dark:text-slate-300 font-medium">CBSE Regional Exhibition</span>
-                        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs text-slate-700 dark:text-slate-300 font-medium">Multiple Awards at Rising Spirit Fest</span>
-                        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs text-slate-700 dark:text-slate-300 font-medium">Shining at Excella Fest 2025</span>
-                        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs text-slate-700 dark:text-slate-300 font-medium">Top Honors at SRIJAN 4.0</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2024-25 Academic Year -->
-            <div class="mb-16">
-                <div class="flex items-center gap-4 mb-8">
-                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">2024 - 2025</h3>
-                    <div class="h-px bg-slate-200 dark:bg-white/10 flex-grow"></div>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-yellow-500 bg-gradient-to-b from-yellow-50/50 to-transparent dark:from-yellow-900/20 sm:col-span-2 lg:col-span-2">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-yellow-100 dark:bg-yellow-500/20 rounded-xl text-yellow-600 dark:text-yellow-400">
-                                <i data-lucide="globe" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-xl">Global Competition, USA</h4>
-                                <p class="text-yellow-600 dark:text-yellow-400 text-sm font-bold my-1 tracking-wide uppercase">International Winners</p>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">A monumental achievement putting Brighton International on the global map in robotics innovation.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-yellow-400">
-                        <div class="flex items-center gap-3 mb-2">
-                            <i data-lucide="medal" class="w-5 h-5 text-yellow-500"></i>
-                            <h4 class="font-bold text-slate-900 dark:text-white text-lg">INSEF National Fair</h4>
-                        </div>
-                        <p class="text-yellow-600 dark:text-yellow-400 text-sm font-bold">GOLD Medal</p>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6">
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">IIT Delhi</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">Selection in Top 100</p>
-                    </div>
-                    
-                    <div class="glass-card rounded-2xl p-6">
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">Ideathon 2024</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">Top 500 in India</p>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6">
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg">Srijan 2024 (Anjenya Univ)</h4>
-                        <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold my-1">First Prize</p>
                     </div>
 
                     <div class="glass-card rounded-2xl p-6 sm:col-span-2 lg:col-span-3 bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-wrap gap-3">
