@@ -148,6 +148,7 @@
         
         <!-- PAGE: HOME -->
         <div id="page-home" class="page-content active">
+            <!-- 1. Default Hero Section -->
             <section class="relative pt-16 pb-32 flex flex-col items-center justify-center text-center px-4">
                 <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-300/20 dark:from-blue-600/10 via-transparent to-transparent blur-3xl"></div>
                 
@@ -177,7 +178,7 @@
                 </div>
             </section>
 
-            <!-- Reverted to symmetric 3-column layout on viewports -->
+            <!-- 2. Core Pillars -->
             <section class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 pb-12">
                 <div class="glass-card p-6 md:p-8 hover:-translate-y-1 transition-transform duration-300 rounded-2xl flex flex-col justify-between">
                     <div>
@@ -216,7 +217,47 @@
                 </div>
             </section>
 
-            <!-- Separated Project spotlight banner on Home Page -->
+            <!-- 3. NEW: Mind-Spark Hero Section -->
+            <section class="max-w-6xl mx-auto px-4 pb-20">
+                <div class="glass-card p-8 md:p-12 rounded-3xl border-t-4 border-t-blue-500 relative overflow-hidden flex flex-col md:flex-row items-center gap-10">
+                    <div class="absolute -right-20 -bottom-20 opacity-5 dark:opacity-10 pointer-events-none">
+                        <i data-lucide="sparkles" class="w-96 h-96 text-blue-500"></i>
+                    </div>
+                    
+                    <div class="flex-1 space-y-6 relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
+                            <i data-lucide="star" class="w-4 h-4"></i> Annual Inter-School Festival
+                        </div>
+                        
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                            Mind-Spark
+                        </h2>
+                        
+                        <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed">
+                            <p>
+                                <strong>MINDSPARK</strong> is the premier annual inter-school festival hosted by Brighton International School, Raipur.
+                            </p>
+                            <p>
+                                As a core part of this grand celebration, our lab hosts amazing, high-octane robotics events, competitions, and technical showcases where students from across the region battle it out with their custom-built machines!
+                            </p>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button onclick="window.open('https://brightoninternational.in/', '_blank')" class="px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-bold text-sm transition-all shadow-lg hover:-translate-y-0.5 flex items-center gap-2 w-max">
+                                Mindsparks <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex w-1/3 justify-center relative z-10">
+                        <div class="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500/20 to-red-500/20 flex items-center justify-center border border-white/10 shadow-2xl backdrop-blur-sm">
+                            <i data-lucide="zap" class="w-24 h-24 text-blue-600 dark:text-red-400 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Separated Project spotlight banner on Home Page -->
             <section class="max-w-6xl mx-auto px-4 pb-20">
                 <div class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-red-500 bg-gradient-to-br from-red-500/5 to-transparent flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div class="space-y-2">
