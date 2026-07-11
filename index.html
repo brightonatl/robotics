@@ -27,7 +27,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap');
         
         body { font-family: 'Inter', sans-serif; }
 
@@ -94,7 +94,7 @@
                 <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
                     <div class="bg-gradient-to-br from-blue-600 to-red-600 p-2 rounded-lg text-white">
-                        <i data-lucide="rocket" class="w-5 h-5"></i>
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
                     </div>
                     <span class="font-bold text-lg tracking-wide hidden sm:block text-slate-900 dark:text-white">
                         Brighton Robotics
@@ -325,58 +325,63 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <!-- Card 1: Kunal's Super Site -->
-                <a href="https://kunalurkude.super.site/robotics/arduino-projects" target="_blank" rel="noopener noreferrer" class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-blue-400 dark:hover:border-blue-500/50 transition-all rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-blue-400 dark:hover:border-blue-500/50 transition-all rounded-2xl">
                     <div class="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 shrink-0 group-hover:scale-110 transition-transform">
                         <i data-lucide="book-open" class="w-6 h-6"></i>
                     </div>
-                    <div>
+                    <div class="flex-grow w-full">
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Basics of Arduino</h3>
-                        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">Comprehensive guides and beginner-friendly projects to kickstart your journey with Arduino and basic electronics.</p>
-                        <div class="text-sm font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">Comprehensive guides and beginner-friendly projects to kickstart your journey with Arduino and basic electronics.</p>
+                        <a href="https://kunalurkude.super.site/robotics/arduino-projects" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-all shadow-md shadow-blue-500/10">
                             View Projects <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Card 2: Arduino Docs -->
-                <a href="https://docs.arduino.cc/learn/" target="_blank" rel="noopener noreferrer" class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-red-400 dark:hover:border-red-500/50 transition-all rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
-                    <div class="p-4 rounded-2xl bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-400 shrink-0 group-hover:scale-110 transition-transform">
-                        <i data-lucide="code" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">Learn Arduino in Detail</h3>
-                        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">Dive deep into the official documentation to master C++ programming, microcontrollers, and advanced circuitry.</p>
-                        <div class="text-sm font-semibold text-red-600 dark:text-red-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                            Read Official Docs <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Card 3: Sensors -->
-                <div class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-blue-400 dark:hover:border-blue-500/50 transition-all cursor-pointer rounded-2xl">
-                    <div class="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 shrink-0 group-hover:scale-110 transition-transform">
-                        <i data-lucide="rocket" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Sensors & Environment</h3>
-                        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">Integrating ultrasonic, line tracking, and infrared sensors to make autonomous decisions.</p>
-                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 w-max block">
-                            Coming Soon
-                        </span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Card 4: Mechanics -->
-                <div class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-red-400 dark:hover:border-red-500/50 transition-all cursor-pointer rounded-2xl">
-                    <div class="p-4 rounded-2xl bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-400 shrink-0">
-                        <i data-lucide="settings" class="w-6 h-6"></i>
+                <!-- Card 2: Arduino Docs -->
+                <div class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-red-400 dark:hover:border-red-500/50 transition-all rounded-2xl">
+                    <div class="p-4 rounded-2xl bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-400 shrink-0 group-hover:scale-110 transition-transform">
+                        <i data-lucide="code" class="w-6 h-6"></i>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Advanced Mechanisms</h3>
-                        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">Kinematics, gear ratios, and advanced chassis design for competition robots.</p>
-                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 w-max block">
-                            Coming Soon
-                        </span>
+                    <div class="flex-grow w-full">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">Learn Arduino in Detail</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">Dive deep into the official documentation to master C++ programming, microcontrollers, and advanced circuitry.</p>
+                        <a href="https://docs.arduino.cc/learn/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-all shadow-md shadow-red-500/10">
+                            Read Official Docs <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Sensors -->
+                <div class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-blue-400 dark:hover:border-blue-500/50 transition-all rounded-2xl">
+                    <div class="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 shrink-0 group-hover:scale-110 transition-transform">
+                        <i data-lucide="rocket" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Sensors & Environment</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">Integrating ultrasonic, line tracking, and infrared sensors to make autonomous decisions.</p>
+                        <div class="flex items-center justify-between sm:justify-start gap-4">
+                            <button disabled class="cursor-not-allowed opacity-70 inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-sm font-semibold">
+                                Locked
+                            </button>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300">
+                                Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Introduction to Prompting -->
+                <div class="glass-card p-6 flex flex-col sm:flex-row gap-6 items-start group hover:border-indigo-400 dark:hover:border-indigo-500/50 transition-all rounded-2xl">
+                    <div class="p-4 rounded-2xl bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Introduction to Prompting</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">Master the art of prompt engineering to design advanced generative intelligence commands and optimize workspace tools.</p>
+                        <a href="https://canva.link/1ze17cunztzcvvt" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-all shadow-md shadow-indigo-500/10">
+                            Start Presentation <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -497,7 +502,7 @@
             </div>
 
             <!-- Submit Your Project Card -->
-            <div class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-red-500 bg-gradient-to-br from-red-500/5 to-transparent mb-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-red-500 bg-gradient-to-br from-red-50/5 to-transparent mb-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div class="space-y-2">
                     <div class="flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold text-sm">
                         <i data-lucide="plus-circle" class="w-5 h-5"></i>
@@ -811,7 +816,7 @@
                 <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto text-base">Empowering the next generation of innovators, engineers, and leaders.</p>
             </div>
 
-            <!-- Content Presentation (Editorial Minimalist Style) -->
+            <!-- Content Presentation (Editorial Minimalist Style - No heavy cards) -->
             <div class="space-y-12 text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
                 <p class="border-l-4 border-blue-600 pl-6 py-1 italic text-xl text-slate-800 dark:text-slate-200">
                     At <strong class="text-slate-900 dark:text-white font-semibold">Brighton International School</strong>, our Robotics Program is designed to ignite curiosity, foster innovation, and prepare students for the future of technology.
@@ -849,7 +854,7 @@
                 <!-- Minimal Divider -->
                 <div class="h-px bg-slate-200 dark:bg-white/10 w-full my-12"></div>
 
-                <!-- Meet Our Mentors Section -->
+                <!-- Meet Our Mentors Section (Clean list style) -->
                 <div>
                     <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white text-center mb-2">Meet Our Mentors</h3>
                     <p class="text-slate-500 dark:text-slate-400 text-sm text-center mb-10">Learn directly from our team of dedicated robotics and technology experts.</p>
@@ -898,7 +903,7 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="relative z-10 border-t border-slate-200 dark:border-white/10 bg-white/50 dark:bg-slate-950/50 backdrop-blur-md mt-12 py-8 text-center text-slate-500 dark:text-slate-500 text-sm transition-colors font-mono text-[11px]">
         <p>© <span id="year"></span> Brighton International School Robotics Lab.</p>
         <p class="mt-2 text-slate-400 dark:text-slate-600">Empowering students through innovation • Raipur, Chhattisgarh, India.</p>
