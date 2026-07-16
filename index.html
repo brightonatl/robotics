@@ -78,7 +78,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
         body { font-family: 'Inter', sans-serif; }
 
@@ -128,6 +128,94 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: rgba(156, 163, 175, 0.4);
         }
+
+        /* Leaderboard Animations & Styles */
+        .player-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .player-card:hover {
+            transform: translateX(10px) scale(1.02);
+            z-index: 10;
+        }
+        .rank-1 { border: 1px solid #fbbf24 !important; box-shadow: 0 0 20px rgba(251, 191, 36, 0.2) !important; }
+        .rank-2 { border: 1px solid #94a3b8 !important; box-shadow: 0 0 20px rgba(148, 163, 184, 0.2) !important; }
+        .rank-3 { border: 1px solid #b45309 !important; box-shadow: 0 0 20px rgba(180, 83, 9, 0.2) !important; }
+        
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(148, 163, 184, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease-out;
+        }
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Bento Grid Specific Styles for TV Display */
+        .bento-grid {
+            display: grid;
+            gap: 0.75rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                grid-template-rows: auto auto;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(6, minmax(0, 1fr));
+            }
+        }
+
+        /* Rank 1 (The Big Box) */
+        .bento-rank-1 {
+            grid-column: span 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.02) 100%);
+        }
+        @media (min-width: 768px) { .bento-rank-1 { grid-column: span 2; grid-row: span 2; } }
+        @media (min-width: 1024px) { .bento-rank-1 { grid-column: span 2; grid-row: span 2; } }
+
+        /* Ranks 2 & 3 (Medium Boxes) */
+        .bento-rank-2, .bento-rank-3 {
+            grid-column: span 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        @media (min-width: 768px) { .bento-rank-2, .bento-rank-3 { grid-column: span 2; } }
+        @media (min-width: 1024px) { .bento-rank-2, .bento-rank-3 { grid-column: span 2; } }
+        
+        .bento-rank-2 { background: linear-gradient(135deg, rgba(148, 163, 184, 0.1) 0%, rgba(148, 163, 184, 0.02) 100%); }
+        .bento-rank-3 { background: linear-gradient(135deg, rgba(180, 83, 9, 0.1) 0%, rgba(180, 83, 9, 0.02) 100%); }
+
+        /* Ranks 4-10 (Compact List Items fitting 3 per row on Desktop) */
+        .bento-rank-other {
+            grid-column: span 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0.75rem !important;
+        }
+        @media (min-width: 768px) { .bento-rank-other { grid-column: span 2; } }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 overflow-x-hidden min-h-screen flex flex-col selection:bg-red-500/20">
@@ -138,75 +226,81 @@
     </div>
 
     <!-- Navigation Header -->
-    <nav class="fixed top-0 w-full z-50 p-4 transition-all">
-        <div class="max-w-6xl mx-auto">
-            <div class="glass-card rounded-2xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between">
+    <nav class="fixed top-0 w-full z-50 glass-card !border-x-0 !border-t-0 !rounded-none shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
                 
                 <!-- Logo -->
-                <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
-                    <div class="bg-gradient-to-br from-blue-600 to-red-600 p-2 rounded-lg text-white">
-                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                <div class="flex items-center gap-3 cursor-pointer shrink-0 hover:opacity-80 transition-opacity" onclick="navigate('home')">
+                    <div class="bg-gradient-to-br from-blue-600 to-red-600 p-2.5 rounded-xl text-white shadow-lg shadow-blue-500/20">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
                     </div>
-                    <span class="font-bold text-lg tracking-wide hidden sm:block text-slate-900 dark:text-white">
-                        Brighton Robotics
+                    <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
+                        Brighton <span class="text-blue-600 dark:text-blue-400">Robotics</span>
                     </span>
                 </div>
 
-                <!-- Desktop Navigation Menu -->
-                <div class="hidden md:flex items-center gap-1">
-                    <button data-page="home" onclick="navigate('home')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                <!-- Desktop Navigation Menu (XL screens and up) -->
+                <div class="hidden xl:flex items-center gap-1 bg-slate-500/5 dark:bg-slate-400/10 p-1.5 rounded-full border border-slate-200/50 dark:border-white/5">
+                    <button data-page="home" onclick="navigate('home')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="home" class="w-4 h-4"></i> Home
                     </button>
-                    <button data-page="learn" onclick="navigate('learn')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                    <button data-page="learn" onclick="navigate('learn')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="book-open" class="w-4 h-4"></i> Learn
                     </button>
-                    <button data-page="competitions" onclick="navigate('competitions')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                    <button data-page="competitions" onclick="navigate('competitions')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="trophy" class="w-4 h-4"></i> Competitions
                     </button>
-                    <button data-page="projects" onclick="navigate('projects')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                    <button data-page="projects" onclick="navigate('projects')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="layers" class="w-4 h-4"></i> Projects
                     </button>
-                    <button data-page="fame" onclick="navigate('fame')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                    <button data-page="leaderboard" onclick="navigate('leaderboard')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                        <i data-lucide="bar-chart-2" class="w-4 h-4"></i> Leaderboard
+                    </button>
+                    <button data-page="fame" onclick="navigate('fame')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="star" class="w-4 h-4"></i> Wall of Fame
                     </button>
-                    <button data-page="about" onclick="navigate('about')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
+                    <button data-page="about" onclick="navigate('about')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5">
                         <i data-lucide="info" class="w-4 h-4"></i> About
                     </button>
                 </div>
 
                 <!-- Action Controls -->
-                <div class="flex items-center gap-2">
-                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/10 transition-colors" aria-label="Toggle Theme">
+                <div class="flex items-center gap-3 shrink-0">
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2.5 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors" aria-label="Toggle Theme">
                         <!-- Theme icon injected dynamically -->
                     </button>
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    <button onclick="toggleMobileMenu()" class="xl:hidden p-2.5 rounded-xl text-slate-900 dark:text-white bg-slate-200/50 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
                     </button>
                 </div>
             </div>
+        </div>
 
-            <!-- Mobile Nav Dropdown -->
-            <div id="mobile-menu" class="hidden md:hidden mt-2 absolute left-4 right-4 z-50">
-                <div class="glass-card p-2 flex flex-col gap-1 rounded-2xl">
-                    <button data-page="home" onclick="navigate('home')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
-                        <i data-lucide="home" class="w-4 h-4"></i> Home
-                    </button>
-                    <button data-page="learn" onclick="navigate('learn')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
-                        <i data-lucide="book-open" class="w-4 h-4"></i> Learn
-                    </button>
-                    <button data-page="competitions" onclick="navigate('competitions')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
-                        <i data-lucide="trophy" class="w-4 h-4"></i> Competitions
-                    </button>
-                    <button data-page="projects" onclick="navigate('projects')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
-                        <i data-lucide="layers" class="w-4 h-4"></i> Projects
-                    </button>
-                    <button data-page="fame" onclick="navigate('fame')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
-                        <i data-lucide="star" class="w-4 h-4"></i> Wall of Fame
-                    </button>
-                    <button data-page="about" onclick="navigate('about')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-medium transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5">
-                        <i data-lucide="info" class="w-4 h-4"></i> About
-                    </button>
-                </div>
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden xl:hidden absolute top-20 left-0 w-full glass-card !border-x-0 !border-t-0 !rounded-none shadow-2xl">
+            <div class="px-4 py-4 flex flex-col gap-1 max-h-[75vh] overflow-y-auto custom-scrollbar bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-3xl">
+                <button data-page="home" onclick="navigate('home')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-semibold transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/5">
+                    <i data-lucide="home" class="w-5 h-5"></i> Home
+                </button>
+                <button data-page="learn" onclick="navigate('learn')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-semibold transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/5">
+                    <i data-lucide="book-open" class="w-5 h-5"></i> Learn
+                </button>
+                <button data-page="competitions" onclick="navigate('competitions')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-semibold transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/5">
+                    <i data-lucide="trophy" class="w-5 h-5"></i> Competitions
+                </button>
+                <button data-page="projects" onclick="navigate('projects')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-semibold transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/5">
+                    <i data-lucide="layers" class="w-5 h-5"></i> Projects
+                </button>
+                <button data-page="leaderboard" onclick="navigate('leaderboard')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-semibold transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/5">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Leaderboard
+                </button>
+                <button data-page="fame" onclick="navigate('fame')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-semibold transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/5">
+                    <i data-lucide="star" class="w-5 h-5"></i> Wall of Fame
+                </button>
+                <button data-page="about" onclick="navigate('about')" class="mobile-nav-btn px-4 py-3 rounded-xl text-sm font-semibold transition-all text-left flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/5">
+                    <i data-lucide="info" class="w-5 h-5"></i> About
+                </button>
             </div>
         </div>
     </nav>
@@ -233,15 +327,15 @@
                 </h1>
                 
                 <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mb-10 leading-relaxed">
-                    Igniting curiosity and fostering innovation at the premier **ATL Brighton** center. Dive into cutting-edge technologies, advanced programming, and engineering concepts to build the tech of tomorrow.
+                    Igniting curiosity and fostering innovation at the premier <strong>ATL Brighton</strong> center. Dive into cutting-edge technologies, advanced programming, and engineering concepts to build the tech of tomorrow.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                     <button onclick="navigate('learn')" class="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-500 text-white font-medium transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30">
                         Start Learning <i data-lucide="chevron-right" class="w-5 h-5"></i>
                     </button>
-                    <button onclick="navigate('fame')" class="px-8 py-3 rounded-full bg-white dark:bg-white/10 hover:bg-slate-100 dark:hover:bg-white/20 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white font-medium transition-all shadow-md">
-                        View Wall of Fame
+                    <button onclick="navigate('leaderboard')" class="px-8 py-3 rounded-full bg-white dark:bg-white/10 hover:bg-slate-100 dark:hover:bg-white/20 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white font-medium transition-all shadow-md">
+                        View Leaderboard
                     </button>
                 </div>
             </section>
@@ -255,7 +349,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Hands-on STEM</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                            Practical experience in real-world applications of science, technology, engineering, and mathematics in the **Brighton Robotics** facility.
+                            Practical experience in real-world applications of science, technology, engineering, and mathematics in the <strong>Brighton Robotics</strong> facility.
                         </p>
                     </div>
                 </div>
@@ -267,7 +361,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Elite Competitions</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                            Regular participants and winners at national and international levels, from INSEF to global USA platforms representing **Brighton International School**.
+                            Regular participants and winners at national and international levels, from INSEF to global USA platforms representing <strong>Brighton International School</strong>.
                         </p>
                     </div>
                 </div>
@@ -279,7 +373,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Expert Mentorship</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                            Collaborations with prestigious mentors and direct training from hardware innovators inside the **Atal Tinkering Lab**.
+                            Collaborations with prestigious mentors and direct training from hardware innovators inside the <strong>Atal Tinkering Lab</strong>.
                         </p>
                     </div>
                 </div>
@@ -306,7 +400,7 @@
                                 <strong>MINDSPARK</strong> is the premier annual inter-school festival hosted by Brighton International School, Raipur.
                             </p>
                             <p>
-                                As a core part of this grand celebration, our **ATL Brighton** lab hosts amazing, high-octane robotics events, competitions, and technical showcases where students from across the region battle it out with their custom-built machines!
+                                As a core part of this grand celebration, our <strong>ATL Brighton</strong> lab hosts amazing, high-octane robotics events, competitions, and technical showcases where students from across the region battle it out with their custom-built machines!
                             </p>
                         </div>
                         
@@ -335,7 +429,7 @@
                         </div>
                         <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Learn more about our Lab Projects</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm max-w-xl">
-                            Discover the full library of school minor and major robotics builds, schematics, and functional prototypes built in our **Brighton Robotics** lab.
+                            Discover the full library of school minor and major robotics builds, schematics, and functional prototypes built in our <strong>Brighton Robotics</strong> lab.
                         </p>
                     </div>
                     <a href="https://brightonproject.netlify.app/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all shadow-lg hover:-translate-y-0.5 shrink-0 flex items-center gap-2">
@@ -370,7 +464,7 @@
             <!-- 1. Learning Modules Grid -->
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Learning Center</h2>
-                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Access modules, tutorials, and resources to build your robotics and **ATL Brighton** science knowledge step-by-step.</p>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Access modules, tutorials, and resources to build your robotics and <strong>ATL Brighton</strong> science knowledge step-by-step.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -443,7 +537,7 @@
         <div id="page-competitions" class="page-content max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Competitions & Workshops</h2>
-                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">We challenge ourselves by participating in premier **Brighton Robotics** events across the nation. Register for upcoming events below.</p>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">We challenge ourselves by participating in premier <strong>Brighton Robotics</strong> events across the nation. Register for upcoming events below.</p>
             </div>
 
             <div class="space-y-6">
@@ -460,7 +554,7 @@
                         </a>
                     </div>
                     <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-slate-200 dark:border-white/10">
-                        A massive summer boot camp where students across India and **ATL Brighton** get a chance to become digital entrepreneurs, building tech products and setting up online ventures.
+                        A massive summer boot camp where students across India and <strong>ATL Brighton</strong> get a chance to become digital entrepreneurs, building tech products and setting up online ventures.
                     </p>
                 </div>
             </div>
@@ -530,11 +624,28 @@
         <div id="page-projects" class="page-content max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Student Projects</h2>
-                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Discover the amazing robots, circuits, and solutions built by our brilliant **Brighton Robotics** students.</p>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Discover the amazing robots, circuits, and solutions built by our brilliant <strong>Brighton Robotics</strong> students.</p>
+            </div>
+
+            <!-- Submit Your Project Card -->
+            <div class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-red-500 bg-gradient-to-br from-red-50/5 to-transparent mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold text-sm">
+                        <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                        <span>Share Your Creation</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Submit Your Project</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm max-w-xl">
+                        Have you built or programmed something awesome in the <strong>Brighton International School</strong> lab? Submit your project documentation, diagrams, and files to showcase your work!
+                    </p>
+                </div>
+                <a href="https://brightonproject.netlify.app/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all shadow-lg hover:-translate-y-0.5 shrink-0 flex items-center gap-2">
+                    Submit Project <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+                </a>
             </div>
 
             <!-- Open Repository Banner -->
-            <div class="glass-card p-8 md:p-10 mb-12 text-center bg-gradient-to-br from-blue-100/50 to-red-100/50 dark:from-blue-900/30 dark:to-red-900/30 border-blue-200 dark:border-red-500/30 rounded-2xl relative overflow-hidden flex flex-col items-center">
+            <div class="glass-card p-8 md:p-10 mb-16 text-center bg-gradient-to-br from-blue-100/50 to-red-100/50 dark:from-blue-900/30 dark:to-red-900/30 border-blue-200 dark:border-red-500/30 rounded-2xl relative overflow-hidden flex flex-col items-center">
                 <div class="absolute -left-10 -bottom-10 opacity-10 dark:opacity-20 pointer-events-none">
                     <i data-lucide="database" class="w-64 h-64 text-blue-500 dark:text-blue-400"></i>
                 </div>
@@ -550,23 +661,6 @@
                         Access Repository on Notion <i data-lucide="external-link" class="w-5 h-5"></i>
                     </a>
                 </div>
-            </div>
-
-            <!-- Submit Your Project Card -->
-            <div class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-red-500 bg-gradient-to-br from-red-50/5 to-transparent mb-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                <div class="space-y-2">
-                    <div class="flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold text-sm">
-                        <i data-lucide="plus-circle" class="w-5 h-5"></i>
-                        <span>Share Your Creation</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Submit Your Project</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm max-w-xl">
-                        Have you built or programmed something awesome in the **Brighton International School** lab? Submit your project documentation, diagrams, and files to showcase your work!
-                    </p>
-                </div>
-                <a href="https://brightonproject.netlify.app/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all shadow-lg hover:-translate-y-0.5 shrink-0 flex items-center gap-2">
-                    Submit Project <i data-lucide="upload-cloud" class="w-4 h-4"></i>
-                </a>
             </div>
 
             <!-- Featured Student Work -->
@@ -697,6 +791,139 @@
                 <button onclick="window.open('https://delicate-laugh-77f.notion.site/Project-Repository-34174e5a0212822cad4981ba36f8f532', '_blank')" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline inline-flex items-center gap-2">
                     View all 50+ projects in the repository <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
+            </div>
+        </div>
+
+        <!-- PAGE: LEADERBOARD -->
+        <div id="page-leaderboard" class="page-content max-w-6xl mx-auto px-4 py-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-2 tracking-tight">Legends of Brighton ATL</h2>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto text-base">Brighton Robotics Gamified Point System</p>
+            </div>
+            
+            <!-- 1. Top 10 Standings (Bento Grid) -->
+            <div class="max-w-6xl mx-auto mb-10">
+                <div class="flex justify-between items-end mb-4">
+                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Top 10 Rankings</h3>
+                    <span class="text-xs font-semibold px-3 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-full flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3 h-3"></i> Live via Sheets</span>
+                </div>
+                <!-- BENTO GRID CONTAINER -->
+                <div class="bento-grid" id="leaderboard-body">
+                    <!-- Loading State -->
+                    <div class="glass-card p-8 text-center rounded-2xl flex flex-col items-center justify-center" style="grid-column: 1 / -1;">
+                        <i data-lucide="loader-2" class="w-8 h-8 text-blue-500 animate-spin mb-3"></i>
+                        <p class="text-slate-600 dark:text-slate-400 font-medium">Fetching live ranks from Google Sheets...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Active Bounties / Tasks -->
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-8">
+                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Active Lab Tasks (July Bounties)</h3>
+                    <div class="h-px bg-slate-200 dark:bg-white/10 flex-grow"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Task 1 -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col h-full border-l-4 border-l-red-500 hover:-translate-y-1 transition-transform shadow-lg shadow-red-500/5">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase rounded tracking-wider">Hard</span>
+                            <span class="font-black text-lg text-red-600 dark:text-red-400">+50 pts</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2 leading-tight">4-Way Traffic System</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-grow">Make a 4-way traffic system using LEDs with Arduino in Tinkercad.</p>
+                        <button class="w-full py-2 bg-red-100 dark:bg-red-500/20 hover:bg-red-200 dark:hover:bg-red-500/30 text-red-700 dark:text-red-300 text-xs font-semibold rounded-lg transition-colors">Show Mentor to Claim</button>
+                    </div>
+
+                    <!-- Task 2 -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col h-full border border-slate-200/50 dark:border-white/5 hover:-translate-y-1 transition-transform">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase rounded tracking-wider">Medium</span>
+                            <span class="font-black text-lg text-slate-900 dark:text-white">+20 pts</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2 leading-tight">Object Detection System</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-grow">Make an automatic object detection using Ultrasonic and IR sensors in Tinkercad.</p>
+                        <button class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg transition-colors">Show Mentor to Claim</button>
+                    </div>
+
+                    <!-- Task 3 -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col h-full border border-slate-200/50 dark:border-white/5 hover:-translate-y-1 transition-transform">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-400 text-[10px] font-bold uppercase rounded tracking-wider">Epic</span>
+                            <span class="font-black text-lg text-slate-900 dark:text-white">+45 pts</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2 leading-tight">Innovative Project Pitch</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-grow">Submit an Innovative Project Idea and make a video explaining it. (Idea must be approved by the mentor).</p>
+                        <button class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg transition-colors">Submit Video Link</button>
+                    </div>
+
+                    <!-- Task 4 -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col h-full border border-slate-200/50 dark:border-white/5 hover:-translate-y-1 transition-transform">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase rounded tracking-wider">Easy</span>
+                            <span class="font-black text-lg text-slate-900 dark:text-white">+15 pts</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2 leading-tight">Live Coding Challenge</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-grow">Write a complete Arduino code by yourself in front of a mentor and answer all their questions.</p>
+                        <button class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg transition-colors">Schedule Challenge</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Leaderboard Information & Tiers -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- How It Works -->
+                <div class="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-t-blue-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2.5 bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-xl">
+                            <i data-lucide="info" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">How to Earn Points</h3>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 shrink-0 mt-0.5"></i>
+                            <div><strong>Complete Lab Bounties:</strong> Pick an active task, build it, and show your working project or code to your mentor. The mentor will verify your work and award the points directly!</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 shrink-0 mt-0.5"></i>
+                            <div><strong>Performance & Behavior:</strong> Your ranking can be significantly improved by demonstrating excellent classroom behavior, high performance, and the speed at which you complete lab assignments.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 shrink-0 mt-0.5"></i>
+                            <div><strong>Table Competitions:</strong> Compete with your peers! Earn extra points by actively participating and dominating in fast-paced class table competitions.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tier System -->
+                <div class="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-t-yellow-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2.5 bg-yellow-100 dark:bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 rounded-xl">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Rank Progression</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+                            <div class="flex items-center gap-2"><span class="text-lg">🏆</span> <span class="font-bold text-yellow-600 dark:text-yellow-500">Master</span></div>
+                            <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">1000+ pts</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+                            <div class="flex items-center gap-2"><span class="text-lg">💡</span> <span class="font-bold text-blue-600 dark:text-blue-400">Innovator</span></div>
+                            <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">500 - 999 pts</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+                            <div class="flex items-center gap-2"><span class="text-lg">⚙️</span> <span class="font-bold text-green-600 dark:text-green-400">Maker</span></div>
+                            <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">200 - 499 pts</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+                            <div class="flex items-center gap-2"><span class="text-lg">🌱</span> <span class="font-bold text-slate-600 dark:text-slate-400">Beginner</span></div>
+                            <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">0 - 199 pts</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -874,7 +1101,7 @@
                 </p>
                 
                 <p>
-                    Through hands-on learning, students engage with cutting-edge robotics technologies, programming, and engineering concepts at our modern **ATL Brighton** facility. This workflow allows them to design, assemble, and test their own unique electronic creations. The program heavily emphasizes critical thinking, collaborative teamwork, and creative problem-solving, equipping students with real-world technical skills in STEM.
+                    Through hands-on learning, students engage with cutting-edge robotics technologies, programming, and engineering concepts at our modern <strong>ATL Brighton</strong> facility. This workflow allows them to design, assemble, and test their own unique electronic creations. The program heavily emphasizes critical thinking, collaborative teamwork, and creative problem-solving, equipping students with real-world technical skills in STEM.
                 </p>
 
                 <p>
@@ -1140,6 +1367,192 @@
         
         // Slide in WhatsApp popup after 3 seconds
         setTimeout(showWhatsAppPopup, 3000);
+
+        // --- Leaderboard Logic ---
+        const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRaHZH8Elh9v2cl6wR4553NzVBmYNdSKRgHTX1IuxkL-7kN5n4m8w1AkCyV5iDAGkfBeUU4eHt59fZS/pub?output=csv';
+
+        const tiers = [
+            { title: 'Master', min: 1000, textColor: 'text-yellow-600 dark:text-yellow-500', bgColor: 'bg-yellow-500', icon: '🏆' },
+            { title: 'Innovator', min: 500, textColor: 'text-blue-600 dark:text-blue-400', bgColor: 'bg-blue-500', icon: '💡' },
+            { title: 'Maker', min: 200, textColor: 'text-green-600 dark:text-green-400', bgColor: 'bg-green-500', icon: '⚙️' },
+            { title: 'Beginner', min: 0, textColor: 'text-slate-600 dark:text-slate-400', bgColor: 'bg-slate-400', icon: '🌱' }
+        ];
+
+        async function loadLeaderboard() {
+            try {
+                // ADDED CACHE-BUSTER: Prevents the browser from showing outdated saved data
+                const fetchUrl = sheetCSVUrl + '&cachebuster=' + new Date().getTime();
+                const response = await fetch(fetchUrl);
+                const data = await response.text();
+                
+                let students = [];
+                const rows = data.split(/\r?\n/).slice(1); // Skip header row & handle line breaks
+                
+                rows.forEach(row => {
+                    if (!row.trim()) return;
+
+                    // ADVANCED CSV PARSER: Handles commas inside numbers (e.g., "1,000")
+                    let inQuotes = false;
+                    let cols = [];
+                    let currentVal = "";
+                    
+                    for (let i = 0; i < row.length; i++) {
+                        let char = row[i];
+                        if (char === '"') {
+                            inQuotes = !inQuotes;
+                        } else if (char === ',' && !inQuotes) {
+                            cols.push(currentVal.trim());
+                            currentVal = "";
+                        } else {
+                            currentVal += char;
+                        }
+                    }
+                    cols.push(currentVal.trim()); // Push last column
+
+                    // Ensure we have at least Name and Points
+                    if (cols.length >= 2) {
+                        const name = cols[0].replace(/^"|"$/g, '').trim(); // Remove any quotes around name
+                        
+                        // Clean up points: removes any quotes, commas, or letters before converting to a number
+                        const pointsStr = cols[1].replace(/[^0-9-]/g, '');
+                        const points = parseInt(pointsStr, 10);
+                        
+                        // Grab the Class from the third column (if it exists)
+                        const studentClass = cols[2] ? cols[2].replace(/^"|"$/g, '').trim() : "";
+                        
+                        if (name && !isNaN(points)) {
+                            students.push({ name, points, studentClass });
+                        }
+                    }
+                });
+
+                // Sort students by points descending
+                students.sort((a, b) => b.points - a.points);
+                renderCards(students);
+            } catch (e) {
+                console.error("Error loading leaderboard:", e);
+                document.getElementById('leaderboard-body').innerHTML = `
+                    <div class="glass-card p-6 text-center text-red-500 rounded-2xl border-red-500/20" style="grid-column: 1 / -1;">
+                        Failed to load rankings. Please check your internet connection.
+                    </div>`;
+            }
+        }
+
+        function getTierInfo(points) {
+            for (let i = 0; i < tiers.length; i++) {
+                if (points >= tiers[i].min) {
+                    let nextTierMin = i === 0 ? points : tiers[i - 1].min; 
+                    let currentTierMin = tiers[i].min;
+                    let progress = 100; // Default to max if top tier
+                    
+                    if (i !== 0) {
+                        let range = nextTierMin - currentTierMin;
+                        let earned = points - currentTierMin;
+                        progress = (earned / range) * 100;
+                    }
+                    return { ...tiers[i], progress };
+                }
+            }
+            return { ...tiers[tiers.length-1], progress: 0 }; // Fallback
+        }
+
+        function renderCards(students) {
+            const container = document.getElementById('leaderboard-body');
+            container.innerHTML = ''; 
+
+            if (students.length === 0) {
+                container.innerHTML = `<div class="glass-card p-6 text-center text-slate-500 rounded-2xl" style="grid-column: 1 / -1;">No rankings found yet.</div>`;
+                return;
+            }
+
+            // ONLY Take Top 10 to fit on TV screen
+            const top10 = students.slice(0, 10);
+
+            top10.forEach((student, index) => {
+                const rank = index + 1;
+                const tier = getTierInfo(student.points);
+                const animDelay = index * 0.1; // Staggered entrance
+                
+                // Format Class string if it exists
+                const classHtmlBadge = student.studentClass ? `<span class="mx-1 text-slate-300 dark:text-slate-600">•</span> ${student.studentClass}` : '';
+
+                const avatarUrl = `https://api.dicebear.com/9.x/bottts/svg?seed=${encodeURIComponent(student.name)}&backgroundColor=transparent`;
+                let cardHTML = '';
+
+                // BENTO LAYOUT: RANK 1
+                if (rank === 1) {
+                    cardHTML = `
+                        <div class="glass-card player-card rank-1 bento-rank-1 p-3 md:p-5 rounded-3xl" style="animation-delay: ${animDelay}s">
+                            <div class="text-3xl mb-1 drop-shadow-lg">👑</div>
+                            <img src="${avatarUrl}" alt="Avatar" class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-slate-100 dark:bg-slate-800 p-1.5 shadow-inner mb-2">
+                            <h3 class="text-lg md:text-xl font-black text-slate-900 dark:text-white leading-tight">${student.name}</h3>
+                            ${student.studentClass ? `<p class="text-[11px] text-slate-500 dark:text-slate-400 font-bold mb-2 uppercase tracking-wide">${student.studentClass}</p>` : ''}
+                            <div class="text-[10px] font-semibold flex items-center gap-1 ${tier.textColor} bg-slate-100/50 dark:bg-slate-800/50 px-3 py-1 rounded-full mb-3 mt-1">
+                                ${tier.icon} ${tier.title}
+                            </div>
+                            <div class="w-full max-w-xs">
+                                <p class="text-2xl font-extrabold text-slate-900 dark:text-white mb-1">${student.points} <span class="text-xs font-medium text-slate-500">pts</span></p>
+                                <div class="progress-bar-bg h-1" title="${Math.round(tier.progress)}% to next level">
+                                    <div class="progress-bar-fill ${tier.bgColor}" style="width: ${tier.progress}%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } 
+                // BENTO LAYOUT: RANKS 2 & 3
+                else if (rank === 2 || rank === 3) {
+                    let rankDisplay = rank === 2 ? '🥈' : '🥉';
+                    let borderClass = rank === 2 ? 'rank-2' : 'rank-3';
+                    let gridClass = rank === 2 ? 'bento-rank-2' : 'bento-rank-3';
+
+                    cardHTML = `
+                        <div class="glass-card player-card ${borderClass} ${gridClass} p-3 rounded-3xl flex flex-row items-center gap-3" style="animation-delay: ${animDelay}s">
+                            <img src="${avatarUrl}" alt="Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-100 dark:bg-slate-800 p-1 shadow-inner shrink-0">
+                            <div class="flex-grow w-full">
+                                <div class="flex justify-between items-start mb-0.5">
+                                    <h3 class="text-sm md:text-base font-bold text-slate-900 dark:text-white truncate">${student.name}</h3>
+                                    <span class="text-lg leading-none">${rankDisplay}</span>
+                                </div>
+                                ${student.studentClass ? `<span class="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase block mb-1">${student.studentClass}</span>` : ''}
+                                <div class="text-[9px] font-semibold ${tier.textColor} mb-2 flex items-center gap-1 mt-0.5">
+                                    ${tier.icon} ${tier.title}
+                                </div>
+                                <p class="text-lg font-extrabold text-slate-900 dark:text-white mb-1.5 leading-none">${student.points} <span class="text-[9px] font-medium text-slate-500">pts</span></p>
+                                <div class="progress-bar-bg h-1" title="${Math.round(tier.progress)}% to next level">
+                                    <div class="progress-bar-fill ${tier.bgColor}" style="width: ${tier.progress}%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                // BENTO LAYOUT: RANKS 4-10
+                else {
+                    cardHTML = `
+                        <div class="glass-card player-card bento-rank-other rounded-2xl hover:bg-slate-100/50 dark:hover:bg-slate-800/50" style="animation-delay: ${animDelay}s">
+                            <div class="flex items-center gap-2 md:gap-3 overflow-hidden">
+                                <span class="text-xs md:text-sm font-bold text-slate-400 dark:text-slate-500 w-4">#${rank}</span>
+                                <img src="${avatarUrl}" alt="Avatar" class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-slate-200 dark:bg-slate-700 p-0.5 shrink-0">
+                                <div class="truncate">
+                                    <h3 class="text-[11px] md:text-xs font-bold text-slate-900 dark:text-white truncate leading-tight">${student.name}</h3>
+                                    <span class="text-[9px] font-medium text-slate-500 block truncate mt-0.5">
+                                        <span class="${tier.textColor}">${tier.title}</span>${classHtmlBadge}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="text-right shrink-0 ml-2">
+                                <p class="text-sm font-extrabold text-slate-900 dark:text-white leading-none">${student.points}</p>
+                                <span class="text-[8px] text-slate-500">pts</span>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        // Initialize Leaderboard Data
+        loadLeaderboard();
     </script>
 </body>
 </html>
