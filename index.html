@@ -98,6 +98,20 @@
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
         }
 
+        /* Full Width Header Styling */
+        html.dark .header-glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        html:not(.dark) .header-glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
         /* Clean transition animations for SPA pages */
         .page-content {
             display: none;
@@ -165,12 +179,12 @@
         <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-red-500/10 dark:bg-red-900/15 blur-[120px] md:blur-[160px]"></div>
     </div>
 
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 w-full z-50 glass-card !border-x-0 !border-t-0 !rounded-none shadow-sm transition-all duration-300">
+    <!-- Navigation Header (Full Width Fixed Glass) -->
+    <nav class="fixed top-0 w-full z-50 header-glass transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <!-- Logo -->
+                <!-- Logo without the CPU icon -->
                 <div class="flex items-center cursor-pointer shrink-0 hover:opacity-80 transition-opacity" onclick="navigate('home')">
                     <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
                         Brighton <span class="text-blue-600 dark:text-blue-400">Robotics</span>
@@ -264,7 +278,7 @@
                 </h1>
                 
                 <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mb-10 leading-relaxed">
-                    Igniting curiosity and fostering innovation at the premier <strong>ATL Brighton</strong> center. Dive into cutting-edge technologies, advanced programming, and engineering concepts to build the tech of tomorrow.
+                    Igniting curiosity and fostering innovation at the premier ATL Brighton center. Dive into cutting-edge technologies, advanced programming, and engineering concepts to build the tech of tomorrow.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -286,7 +300,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Hands-on STEM</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                            Practical experience in real-world applications of science, technology, engineering, and mathematics in the <strong>Brighton Robotics</strong> facility.
+                            Practical experience in real-world applications of science, technology, engineering, and mathematics in the Brighton Robotics facility.
                         </p>
                     </div>
                 </div>
@@ -298,7 +312,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Elite Competitions</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                            Regular participants and winners at national and international levels, from INSEF to global USA platforms representing <strong>Brighton International School</strong>.
+                            Regular participants and winners at national and international levels, from INSEF to global USA platforms representing Brighton International School.
                         </p>
                     </div>
                 </div>
@@ -310,7 +324,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Expert Mentorship</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                            Collaborations with prestigious mentors and direct training from hardware innovators inside the <strong>Atal Tinkering Lab</strong>.
+                            Collaborations with prestigious mentors and direct training from hardware innovators inside the Atal Tinkering Lab.
                         </p>
                     </div>
                 </div>
@@ -337,7 +351,7 @@
                                 <strong>MINDSPARK</strong> is the premier annual inter-school festival hosted by Brighton International School, Raipur.
                             </p>
                             <p>
-                                As a core part of this grand celebration, our <strong>ATL Brighton</strong> lab hosts amazing, high-octane robotics events, competitions, and technical showcases where students from across the region battle it out with their custom-built machines!
+                                As a core part of this grand celebration, our ATL Brighton lab hosts amazing, high-octane robotics events, competitions, and technical showcases where students from across the region battle it out with their custom-built machines!
                             </p>
                         </div>
                         
@@ -366,7 +380,7 @@
                         </div>
                         <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Learn more about our Lab Projects</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm max-w-xl">
-                            Discover the full library of school minor and major robotics builds, schematics, and functional prototypes built in our <strong>Brighton Robotics</strong> lab.
+                            Discover the full library of school minor and major robotics builds, schematics, and functional prototypes built in our Brighton Robotics lab.
                         </p>
                     </div>
                     <a href="https://brightonproject.netlify.app/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all shadow-lg hover:-translate-y-0.5 shrink-0 flex items-center gap-2">
@@ -401,7 +415,7 @@
             <!-- 1. Learning Modules Grid -->
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Learning Center</h2>
-                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Access modules, tutorials, and resources to build your robotics and <strong>ATL Brighton</strong> science knowledge step-by-step.</p>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Access modules, tutorials, and resources to build your robotics and ATL Brighton science knowledge step-by-step.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -474,7 +488,7 @@
         <div id="page-competitions" class="page-content max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Competitions & Workshops</h2>
-                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">We challenge ourselves by participating in premier <strong>Brighton Robotics</strong> events across the nation. Register for upcoming events below.</p>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">We challenge ourselves by participating in premier Brighton Robotics events across the nation. Register for upcoming events below.</p>
             </div>
 
             <div class="space-y-6">
@@ -491,7 +505,7 @@
                         </a>
                     </div>
                     <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-slate-200 dark:border-white/10">
-                        A massive summer boot camp where students across India and <strong>ATL Brighton</strong> get a chance to become digital entrepreneurs, building tech products and setting up online ventures.
+                        A massive summer boot camp where students across India and ATL Brighton get a chance to become digital entrepreneurs, building tech products and setting up online ventures.
                     </p>
                 </div>
             </div>
@@ -561,7 +575,7 @@
         <div id="page-projects" class="page-content max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Student Projects</h2>
-                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Discover the amazing robots, circuits, and solutions built by our brilliant <strong>Brighton Robotics</strong> students.</p>
+                <p class="text-slate-600 dark:text-blue-200/80 max-w-2xl mx-auto">Discover the amazing robots, circuits, and solutions built by our brilliant Brighton Robotics students.</p>
             </div>
 
             <!-- Submit Your Project Card -->
@@ -573,7 +587,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Submit Your Project</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm max-w-xl">
-                        Have you built or programmed something awesome in the <strong>Brighton International School</strong> lab? Submit your project documentation, diagrams, and files to showcase your work!
+                        Have you built or programmed something awesome in the Brighton International School lab? Submit your project documentation, diagrams, and files to showcase your work!
                     </p>
                 </div>
                 <a href="https://brightonproject.netlify.app/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all shadow-lg hover:-translate-y-0.5 shrink-0 flex items-center gap-2">
@@ -770,7 +784,7 @@
                         </div>
                         <h4 class="font-bold text-slate-900 dark:text-white mb-2 leading-tight">4-Way Traffic System</h4>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-grow">Make a 4-way traffic system using LEDs with Arduino in Tinkercad.</p>
-                        <button class="w-full py-2 bg-red-100 dark:bg-red-500/20 hover:bg-red-200 dark:hover:bg-red-500/30 text-red-700 dark:text-red-300 text-xs font-semibold rounded-lg transition-colors">Show Mentor to Claim</button>
+                        <button onclick="window.open('https://www.tinkercad.com/circuits', '_blank')" class="w-full py-2 bg-red-100 dark:bg-red-500/20 hover:bg-red-200 dark:hover:bg-red-500/30 text-red-700 dark:text-red-300 text-xs font-semibold rounded-lg transition-colors flex justify-center items-center gap-1.5">Open Tinkercad <i data-lucide="external-link" class="w-3.5 h-3.5"></i></button>
                     </div>
 
                     <!-- Task 2 -->
@@ -781,7 +795,7 @@
                         </div>
                         <h4 class="font-bold text-slate-900 dark:text-white mb-2 leading-tight">Object Detection System</h4>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-grow">Make an automatic object detection using Ultrasonic and IR sensors in Tinkercad.</p>
-                        <button class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg transition-colors">Show Mentor to Claim</button>
+                        <button onclick="window.open('https://www.tinkercad.com/circuits', '_blank')" class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg transition-colors flex justify-center items-center gap-1.5">Open Tinkercad <i data-lucide="external-link" class="w-3.5 h-3.5"></i></button>
                     </div>
 
                     <!-- Task 3 -->
@@ -834,7 +848,7 @@
                     </ul>
                 </div>
 
-                <!-- Tier System -->
+                <!-- Tier System (Professional Layout) -->
                 <div class="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-t-yellow-500">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="p-2.5 bg-yellow-100 dark:bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 rounded-xl">
@@ -844,19 +858,31 @@
                     </div>
                     <div class="space-y-3">
                         <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
-                            <div class="flex items-center gap-2"><span class="text-lg">🏆</span> <span class="font-bold text-yellow-600 dark:text-yellow-500">Master</span></div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <span class="font-bold text-yellow-600 dark:text-yellow-500">Master</span>
+                            </div>
                             <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">1000+ pts</span>
                         </div>
                         <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
-                            <div class="flex items-center gap-2"><span class="text-lg">💡</span> <span class="font-bold text-blue-600 dark:text-blue-400">Innovator</span></div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                                <span class="font-bold text-blue-600 dark:text-blue-400">Innovator</span>
+                            </div>
                             <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">500 - 999 pts</span>
                         </div>
                         <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
-                            <div class="flex items-center gap-2"><span class="text-lg">⚙️</span> <span class="font-bold text-green-600 dark:text-green-400">Maker</span></div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                <span class="font-bold text-green-600 dark:text-green-400">Maker</span>
+                            </div>
                             <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">200 - 499 pts</span>
                         </div>
                         <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50">
-                            <div class="flex items-center gap-2"><span class="text-lg">🌱</span> <span class="font-bold text-slate-600 dark:text-slate-400">Beginner</span></div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-3 h-3 rounded-full bg-slate-400"></span>
+                                <span class="font-bold text-slate-600 dark:text-slate-400">Beginner</span>
+                            </div>
                             <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">0 - 199 pts</span>
                         </div>
                     </div>
@@ -1038,7 +1064,7 @@
                 </p>
                 
                 <p>
-                    Through hands-on learning, students engage with cutting-edge robotics technologies, programming, and engineering concepts at our modern <strong>ATL Brighton</strong> facility. This workflow allows them to design, assemble, and test their own unique electronic creations. The program heavily emphasizes critical thinking, collaborative teamwork, and creative problem-solving, equipping students with real-world technical skills in STEM.
+                    Through hands-on learning, students engage with cutting-edge robotics technologies, programming, and engineering concepts at our modern ATL Brighton facility. This workflow allows them to design, assemble, and test their own unique electronic creations. The program heavily emphasizes critical thinking, collaborative teamwork, and creative problem-solving, equipping students with real-world technical skills in STEM.
                 </p>
 
                 <p>
@@ -1308,16 +1334,17 @@
         // --- Leaderboard Logic ---
         const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRaHZH8Elh9v2cl6wR4553NzVBmYNdSKRgHTX1IuxkL-7kN5n4m8w1AkCyV5iDAGkfBeUU4eHt59fZS/pub?output=csv';
 
+        // Tiers redefined without emojis for a clean, professional aesthetic
         const tiers = [
-            { title: 'Master', min: 1000, textColor: 'text-yellow-600 dark:text-yellow-500', bgColor: 'bg-yellow-500', icon: '🏆' },
-            { title: 'Innovator', min: 500, textColor: 'text-blue-600 dark:text-blue-400', bgColor: 'bg-blue-500', icon: '💡' },
-            { title: 'Maker', min: 200, textColor: 'text-green-600 dark:text-green-400', bgColor: 'bg-green-500', icon: '⚙️' },
-            { title: 'Beginner', min: 0, textColor: 'text-slate-600 dark:text-slate-400', bgColor: 'bg-slate-400', icon: '🌱' }
+            { title: 'Master', min: 1000, textColor: 'text-yellow-600 dark:text-yellow-500', bgColor: 'bg-yellow-500' },
+            { title: 'Innovator', min: 500, textColor: 'text-blue-600 dark:text-blue-400', bgColor: 'bg-blue-500' },
+            { title: 'Maker', min: 200, textColor: 'text-green-600 dark:text-green-400', bgColor: 'bg-green-500' },
+            { title: 'Beginner', min: 0, textColor: 'text-slate-600 dark:text-slate-400', bgColor: 'bg-slate-400' }
         ];
 
         async function loadLeaderboard() {
             try {
-                // ADDED CACHE-BUSTER: Prevents the browser from showing outdated saved data
+                // CACHE-BUSTER: Prevents the browser from showing outdated saved data
                 const fetchUrl = sheetCSVUrl + '&cachebuster=' + new Date().getTime();
                 const response = await fetch(fetchUrl);
                 const data = await response.text();
@@ -1348,13 +1375,13 @@
 
                     // Ensure we have at least Name and Points
                     if (cols.length >= 2) {
-                        const name = cols[0].replace(/^"|"$/g, '').trim(); // Remove any quotes around name
+                        const name = cols[0].replace(/^"|"$/g, '').trim(); 
                         
-                        // Clean up points: removes any quotes, commas, or letters before converting to a number
+                        // Clean up points: removes quotes, commas, letters
                         const pointsStr = cols[1].replace(/[^0-9-]/g, '');
                         const points = parseInt(pointsStr, 10);
                         
-                        // Grab the Class from the third column (if it exists)
+                        // Grab the Class from the third column
                         const studentClass = cols[2] ? cols[2].replace(/^"|"$/g, '').trim() : "";
                         
                         if (name && !isNaN(points)) {
@@ -1380,7 +1407,7 @@
                 if (points >= tiers[i].min) {
                     let nextTierMin = i === 0 ? points : tiers[i - 1].min; 
                     let currentTierMin = tiers[i].min;
-                    let progress = 100; // Default to max if top tier
+                    let progress = 100; 
                     
                     if (i !== 0) {
                         let range = nextTierMin - currentTierMin;
@@ -1390,7 +1417,7 @@
                     return { ...tiers[i], progress };
                 }
             }
-            return { ...tiers[tiers.length-1], progress: 0 }; // Fallback
+            return { ...tiers[tiers.length-1], progress: 0 }; 
         }
 
         function renderCards(students) {
@@ -1406,52 +1433,52 @@
             const top10 = students.slice(0, 10);
             
             let previousPoints = -1;
-            let currentRank = 1;
+            let currentRank = 0;
 
             top10.forEach((student, index) => {
-                // Logic to handle ties perfectly
+                // DENSE RANKING LOGIC: If points are exactly the same, they share the same rank category
                 if (student.points !== previousPoints) {
-                    currentRank = index + 1;
+                    currentRank++;
                 }
                 previousPoints = student.points;
 
                 const tier = getTierInfo(student.points);
-                const animDelay = index * 0.1; // Staggered entrance
+                const animDelay = index * 0.1; 
                 
                 // Format Class string if it exists
                 const classHtmlBadge = student.studentClass ? `<span class="mx-1 text-slate-300 dark:text-slate-600">•</span> ${student.studentClass}` : '';
 
                 const avatarUrl = `https://api.dicebear.com/9.x/bottts/svg?seed=${encodeURIComponent(student.name)}&backgroundColor=transparent`;
                 
-                // Determine styling based on rank
                 let rankStyle = '';
-                let rankIcon = `#${currentRank}`;
+                let rankNumberStyle = '';
 
+                // Professional formatting without emojis
                 if (currentRank === 1) {
                     rankStyle = 'border-l-4 border-l-yellow-400 bg-gradient-to-r from-yellow-500/10 to-transparent dark:from-yellow-500/5';
-                    rankIcon = '👑';
+                    rankNumberStyle = 'text-yellow-600 dark:text-yellow-500';
                 } else if (currentRank === 2) {
                     rankStyle = 'border-l-4 border-l-slate-400 bg-gradient-to-r from-slate-500/10 to-transparent dark:from-slate-500/5';
-                    rankIcon = '🥈';
+                    rankNumberStyle = 'text-slate-500 dark:text-slate-400';
                 } else if (currentRank === 3) {
                     rankStyle = 'border-l-4 border-l-amber-600 bg-gradient-to-r from-amber-700/10 to-transparent dark:from-amber-700/5';
-                    rankIcon = '🥉';
+                    rankNumberStyle = 'text-amber-700 dark:text-amber-600';
                 } else {
                     rankStyle = 'border border-slate-200/50 dark:border-white/5 hover:bg-slate-100/50 dark:hover:bg-slate-800/50';
+                    rankNumberStyle = 'text-slate-400 dark:text-slate-500';
                 }
 
-                // Uniform Card Layout
                 const cardHTML = `
                     <div class="glass-card player-card p-4 rounded-2xl flex items-center gap-4 ${rankStyle} transition-all" style="animation-delay: ${animDelay}s">
                         <div class="w-10 text-center shrink-0 flex items-center justify-center">
-                            <span class="${currentRank <= 3 ? 'text-3xl drop-shadow-md' : 'text-xl font-bold text-slate-400 dark:text-slate-500'}">${rankIcon}</span>
+                            <span class="text-xl md:text-2xl font-black ${rankNumberStyle}">#${currentRank}</span>
                         </div>
                         <img src="${avatarUrl}" alt="Avatar" class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 p-1.5 shadow-inner shrink-0">
                         
                         <div class="flex-grow min-w-0">
                             <h3 class="text-lg font-bold text-slate-900 dark:text-white truncate leading-tight">${student.name}</h3>
                             <div class="text-xs font-medium text-slate-500 flex items-center mt-1 truncate">
-                                <span class="${tier.textColor} font-bold mr-1 flex items-center gap-0.5">${tier.icon} ${tier.title}</span> ${classHtmlBadge}
+                                <span class="${tier.textColor} font-bold mr-1">${tier.title}</span> ${classHtmlBadge}
                             </div>
                         </div>
 
