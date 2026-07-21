@@ -1471,8 +1471,6 @@
                 
                 // Format Class string if it exists
                 const classHtmlBadge = student.studentClass ? `<span class="mx-1 text-slate-300 dark:text-slate-600">•</span> ${student.studentClass}` : '';
-
-                const avatarUrl = `https://api.dicebear.com/9.x/bottts/svg?seed=${encodeURIComponent(student.name)}&backgroundColor=transparent`;
                 
                 let rankStyle = '';
                 let rankNumberStyle = '';
@@ -1497,11 +1495,10 @@
                         <div class="w-10 text-center shrink-0 flex items-center justify-center">
                             <span class="text-xl md:text-2xl font-black ${rankNumberStyle}">#${currentRank}</span>
                         </div>
-                        <img src="${avatarUrl}" alt="Avatar" class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 p-1.5 shadow-inner shrink-0">
                         
-                        <div class="flex-grow min-w-0">
-                            <h3 class="text-lg font-bold text-slate-900 dark:text-white truncate leading-tight">${student.name}</h3>
-                            <div class="text-xs font-medium text-slate-500 flex items-center mt-1 truncate">
+                        <div class="flex-grow min-w-0 pl-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white truncate leading-tight">${student.name}</h3>
+                            <div class="text-xs font-medium text-slate-500 flex items-center mt-1.5 truncate">
                                 <span class="${tier.textColor} font-bold mr-1">${tier.title}</span> ${classHtmlBadge}
                             </div>
                         </div>
